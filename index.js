@@ -5,6 +5,7 @@ const { mongoose } = require('mongoose')
 const app = express()
 const cookieParser = require('cookie-parser')
 
+
 //database connect 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log('Database Connected'))
@@ -17,5 +18,5 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/', require('./routes/authRoutes'))
 
-const port = 8000
+const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server is running on port ${port}`))

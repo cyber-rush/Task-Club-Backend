@@ -109,10 +109,17 @@ const getProfile = (req, res) => {
     }
 }
 
+// Logout Endpoint
+const logoutUser = (req, res) => {
+    res.clearCookie('token'); // Clear the token cookie
+    res.json({ message: 'Logout successful' });
+}
+
 module.exports = {
     test,
     registerUser,
     loginUser,
-    getProfile
+    getProfile,
+    logoutUser
 
 }
