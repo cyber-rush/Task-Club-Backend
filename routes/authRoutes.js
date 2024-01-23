@@ -6,12 +6,7 @@ const { test, registerUser, loginUser, getProfile, logoutUser } = require('../co
 
 //middleware
 
-router.use(
-    cors({
-        credentials: true,
-        origin: process.env.FRONTEND_ORIGIN
-    })
-);
+router.use(cors());
 
 router.get('/', test)
 router.post('/register', registerUser)
