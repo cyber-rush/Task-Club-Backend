@@ -3,7 +3,6 @@ const dotenv = require('dotenv').config()
 const cors = require('cors')
 const { mongoose } = require('mongoose')
 const app = express()
-const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const port = process.env.PORT || 8000;
 
@@ -14,7 +13,12 @@ mongoose.connect(process.env.MONGO_URL)
     .catch((err) => console.log('Database not conected', err))
 
 //middleware
-app.use(cors())
+const corsOptions = {
+    origin: 'http://localhost:5173', // Allow requests from this origin
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+};
+
+app.use(cors(corsOptions));
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
