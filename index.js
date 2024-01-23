@@ -4,6 +4,7 @@ const cors = require('cors')
 const { mongoose } = require('mongoose')
 const app = express()
 const cookieParser = require('cookie-parser')
+const port = process.env.PORT || 8000;
 
 
 //database connect 
@@ -18,5 +19,4 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/', require('./routes/authRoutes'))
 
-const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server is running on port ${port}`))
