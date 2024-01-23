@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config()
 const cors = require('cors')
 const { mongoose } = require('mongoose')
 const app = express()
+const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const port = process.env.PORT || 8000;
 
@@ -13,6 +14,7 @@ mongoose.connect(process.env.MONGO_URL)
     .catch((err) => console.log('Database not conected', err))
 
 //middleware
+app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
